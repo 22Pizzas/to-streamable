@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "to-streamable"
+version = "1.0.0"
+description = "Upload videos to Streamable from the command line"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "to-streamable" }]
+keywords = ["streamable", "video", "upload", "cli"]
+dependencies = ["requests>=2.28"]
+
+[project.optional-dependencies]
+watch = ["watchdog>=3"]
+clipboard = ["pyperclip>=1.8"]
+
+[project.scripts]
+to-streamable = "to_streamable.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/22Pizzas/to-streamable"
+
+[tool.setuptools.packages.find]
+where = ["src"]
