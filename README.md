@@ -102,14 +102,12 @@ There is no delete command for the hosted video. `--delete` only removes the loc
 
 ## Install
 
-The repository is private. `pip install` from a public URL will not work until you are authenticated to GitHub.
-
-On Kubuntu, with [pipx](https://pipx.pypa.io/) and SSH already set up for GitHub (this is what `gh auth status` uses on this machine):
+On Kubuntu, with [pipx](https://pipx.pypa.io/):
 
 ```bash
 sudo apt install python3 pipx xclip
 pipx ensurepath
-pipx install 'git+ssh://git@github.com/22Pizzas/to-streamable.git'
+pipx install 'git+https://github.com/22Pizzas/to-streamable.git'
 ```
 
 Open a new terminal if `pipx ensurepath` changed your PATH. Then:
@@ -125,17 +123,17 @@ Upgrade later with:
 pipx upgrade to-streamable
 ```
 
-If pipx cannot see the private repo over SSH, install from a local checkout instead:
+From a local checkout:
 
 ```bash
-git clone git@github.com:22Pizzas/to-streamable.git
+git clone https://github.com/22Pizzas/to-streamable.git
 pipx install --force ~/to-streamable
 ```
 
 Without pipx:
 
 ```bash
-python3 -m pip install --user 'git+ssh://git@github.com/22Pizzas/to-streamable.git'
+python3 -m pip install --user 'git+https://github.com/22Pizzas/to-streamable.git'
 ```
 
 That script lands in `~/.local/bin`. That directory has to be on `PATH`.
@@ -154,7 +152,7 @@ Kubuntu on X11 usually wants `xclip`. A Wayland session wants `wl-clipboard`. If
 Optional extras, if you want them baked into the pipx environment:
 
 ```bash
-pipx install 'git+ssh://git@github.com/22Pizzas/to-streamable.git[watch,clipboard]'
+pipx install 'git+https://github.com/22Pizzas/to-streamable.git[watch,clipboard]'
 ```
 
 `watch` installs [watchdog](https://github.com/gorakhargosh/watchdog) so folder mode can use inotify. Without it, the folder is polled once a second. `clipboard` installs `pyperclip`, which is only used when the system clipboard tools are missing.
@@ -373,7 +371,7 @@ tests/                  unittest, no network
 ## Development
 
 ```bash
-git clone git@github.com:22Pizzas/to-streamable.git
+git clone https://github.com/22Pizzas/to-streamable.git
 cd to-streamable
 PYTHONPATH=src python3 -m unittest discover -s tests -v
 ```
